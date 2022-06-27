@@ -60,7 +60,7 @@ export default {
             datasets: [
               {
                 label: ['Azules'],
-                data: [ 15 ],
+                data: [ 25 ],
                 backgroundColor: ['#4040ff']
               },
               {

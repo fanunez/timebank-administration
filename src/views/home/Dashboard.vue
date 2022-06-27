@@ -9,7 +9,7 @@
             </div> 
             <UsersRecord style="width: 300px;"/> 
         </div>
-        <!--  -->
+        <!-- Second row: Services and Balance available -->
         <div class="container mt-4" style="width: 350px;">
             <div class="row justify-content-between">
                 <!-- Actual services -->
@@ -44,13 +44,13 @@ import ActualBalance from '@/components/dashboard/ActualBalance.vue'
 
 <style scoped>
 .main{
-  min-height: -webkit-fill-available;
-  height: 100vh;
-  padding-top: 20px;
-  box-sizing: border-box;
-  max-width: 425px;
-  margin: 0 auto;
-  background-color:white
+    min-height: -webkit-fill-available;
+    height: 100vh;
+    padding-top: 20px;
+    box-sizing: border-box;
+    max-width: 425px;
+    margin: 0 auto;
+    background-color:white
 }
 
 .image-container {

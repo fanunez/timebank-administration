@@ -16,7 +16,7 @@
         </b-alert>
       </div>
 
-      <form action class="form" @submit.prevent="loginUser">
+      <form action class="form" @submit.prevent="loginAdmin">
         <b-row style="justify-content: center; margin: 10px 40px;">
           <b-input-group class="px-0">
             <b-input-group-prepend>
@@ -55,7 +55,7 @@
 
 
 <script>
-// import auth from "@/logic/auth";
+import auth from "@/logic/auth";
 
 export default {
   data: () => ({
@@ -64,17 +64,17 @@ export default {
       error: false
   }),
   methods: {
-    // async loginUser() {
-    //   try {
-    //     const respon = await auth.loginUser(this.email, this.password);
-    //     const token = respon.data.token;
-    //     auth.setUserLogged(token);
-    //     this.$router.push("/");
-    //   } catch (error) {
-    //     console.log(error);
-    //     this.error = true;
-    //   }
-    // }
+    async loginAdmin() {
+      try {
+        const response = await auth.loginAdmin( this.email, this.password );
+        const token = response.data.token;
+        auth.setUserLogged( token );
+        this.$router.push("/dashboard");
+      } catch (error) {
+        console.log(error);
+        this.error = true;
+      }
+    }
   }
 }
 </script>
