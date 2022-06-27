@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import DashboardView from '../views/home/Dashboard.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import WelcomeView from '../views/auth/WelcomeView.vue'
+import RegisteredView from '../views/home/Registered.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,11 @@ const routes = [
     name: 'dashboard',
     component: DashboardView
   },
+  {
+    path: '/registered-users',
+    name: 'registered',
+    component: RegisteredView
+  }
 ]
 
 const router = new VueRouter({
