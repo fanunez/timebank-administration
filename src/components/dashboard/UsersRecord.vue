@@ -56,11 +56,19 @@ export default {
     return {
         loaded: false,
         chartData: {
-            labels: [ 'Azules', 'Naranjos' ],
-            datasets: [{
-                data: [40, 20],
-                backgroundColor: [ '#4040ff', '#ffa500' ] 
-            }],
+            labels: ['Usuarios'],
+            datasets: [
+              {
+                label: ['Azules'],
+                data: [ 15 ],
+                backgroundColor: ['#4040ff']
+              },
+              {
+                label: ['Naranjos'],
+                data: [ 8 ],
+                backgroundColor: ['#ffa500']
+              }
+            ],
         },
         chartOptions: {
             responsive: true

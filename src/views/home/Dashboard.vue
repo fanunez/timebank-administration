@@ -3,7 +3,10 @@
         <Topbar title="MENÚ ADMINISTRACIÓN"/> 
         <img src="../../assets/logo_banco.png" class="image-container">
         <!-- Users Record -->
-        <div class="container data-container" style="width: 350px;">
+        <div class="container data-container text-left" style="width: 350px;">
+            <div class="text-container mt-2">
+                Usuarios registrados
+            </div> 
             <UsersRecord style="width: 300px;"/> 
         </div>
         <!--  -->
@@ -61,6 +64,11 @@ import ActualBalance from '@/components/dashboard/ActualBalance.vue'
     border: 3px solid #A70187;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 165px;
+}
+
+.text-container {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 </style>
