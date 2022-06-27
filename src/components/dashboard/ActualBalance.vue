@@ -1,12 +1,12 @@
 <template>
     <div class="text-container text-left mt-2">        
-        Bonos de tiempo disponibles
+        Servicios disponibles
         <div class="row mt-1">
             <div class="col-3 pl-2">
-                <Icon icon="bx:time-five" width="48" height="48"/>
+                <Icon icon="ep:suitcase" width="48" height="48" />
             </div>
             <div class="col number-container" style="display: flex; align-self: center;">
-                {{ balance }}
+                {{ services }}
             </div>
         </div>
     </div>
@@ -16,11 +16,11 @@
     export default {
         data: () => {
             return {
-                balance: ''
+                services: ''
             }
         },
         created () {
-            this.balance = 15;
+            this.services = 15;
         }
     }
 </script>

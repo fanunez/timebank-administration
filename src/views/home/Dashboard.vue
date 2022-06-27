@@ -1,24 +1,39 @@
 <template>
     <div class="main">
         <Topbar title="MENÚ ADMINISTRACIÓN"/> 
-        <img src="../../assets/logo_banco.png" style="margin-top: 60px; margin-bottom: 25px; width: 146px; height: 86px;">
+        <img src="../../assets/logo_banco.png" class="image-container">
         <!-- Users Record -->
-        <div class="container" style="width: 350px; border: 2px solid #74015E;">
-            <BarChart style="width: 300px;"/> 
+        <div class="container data-container" style="width: 350px;">
+            <UsersRecord style="width: 300px;"/> 
         </div>
         <!--  -->
-        
+        <div class="container mt-4" style="width: 350px;">
+            <div class="row justify-content-between">
+                <!-- Actual services -->
+                <div class="data-container" style="height: 125px;">
+                    <ActualServices />
+                </div>
+                <!-- Actual balance -->
+                <div class="data-container" style="height: 125px;">
+                    <ActualBalance />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import Topbar from '@/components/shared/Topbar.vue'
-import BarChart from '@/components/dashboard/UsersRecord.vue'
+import UsersRecord from '@/components/dashboard/UsersRecord.vue'
+import ActualServices from '@/components/dashboard/ActualServices.vue'
+import ActualBalance from '@/components/dashboard/ActualBalance.vue'
 
     export default {
         components: {
             Topbar,
-            BarChart,
+            UsersRecord,
+            ActualServices,
+            ActualBalance
         }
     }
 
@@ -34,4 +49,18 @@ import BarChart from '@/components/dashboard/UsersRecord.vue'
   margin: 0 auto;
   background-color:white
 }
+
+.image-container {
+    margin-top: 60px; 
+    margin-bottom: 25px; 
+    width: 146px; 
+    height: 86px;
+}
+
+.data-container {
+    border: 3px solid #A70187;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 165px;
+}
+
 </style>
