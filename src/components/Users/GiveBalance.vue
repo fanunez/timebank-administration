@@ -42,6 +42,12 @@
               </b-input-group>           
               
             </div>
+            <b-modal ref="my-modal" hide-footer hide-header>
+              <div class="d-block text-center">
+                <h3>Bonos del usuario modificados correctamente</h3>
+              </div>
+              <b-button size="lg" class="mt-2" variant="outline-danger" block @click="hideModal" style="border-radius: 10px; border-color: #A70187!important; color:#A70187!important">Cerrar</b-button>
+            </b-modal>
           </b-card-text>
         </b-card>
 
@@ -68,6 +74,17 @@ export default {
     }
   },
   methods: {
+    showModal() {
+      this.$refs['my-modal'].show()
+    },
+    hideModal() {
+      this.$refs['my-modal'].hide()
+    },
+    toggleModal() {
+      // We pass the ID of the button that we want to return focus to
+      // when the modal has hidden
+      this.$refs['my-modal'].toggle('#toggle-btn')
+    },
     searchByName(){
 
         const payload = {
@@ -97,6 +114,7 @@ export default {
       await axios
         .put( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/balance-asignator/'+ uid , payload )
         .then( response => {
+          this.showModal()
         })
         .catch( e => console.log( e ))
     }
@@ -116,7 +134,12 @@ export default {
   }
 }
 </script>
-
+<style>
+  .modal-content{
+    max-width: 350px;
+    margin: auto;
+  }
+</style>
 <style scoped>
 .main{
     min-height: -webkit-fill-available;
