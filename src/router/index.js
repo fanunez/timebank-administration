@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import DashboardView from '../views/home/Dashboard.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import WelcomeView from '../views/auth/WelcomeView.vue'
-import RegisteredView from '../views/home/Registered.vue'
+import GiveBalanceView from '../views/management/GiveBalanceView.vue'
+import RegisteredUsersView from '../views/management/RegisteredUsersView.vue'
 
 Vue.use(VueRouter)
 
@@ -32,9 +33,14 @@ const routes = [
     component: DashboardView
   },
   {
+    path: '/give-balance',
+    name: 'give-balance',
+    component: GiveBalanceView
+  },
+  {
     path: '/registered-users',
-    name: 'registered',
-    component: RegisteredView
+    name: 'registered-users',
+    component: RegisteredUsersView
   }
 ]
 

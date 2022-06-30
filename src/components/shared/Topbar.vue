@@ -15,21 +15,22 @@
         </div>
     <!-- Sidebar -->
     <b-sidebar id="sidebar" 
-               aria-labelledby="sidebar-title" 
-               no-header 
+               aria-labelledby="sidebar-title"               
                backdrop
                shadow
+               style="margin:auto;"
       >
       <template #default="{ hide }">
         <div class="p-3">
+            <h4 id="sidebar-no-header-title">ADMINISTRACIÓN BANCO DE TIEMPO</h4>
             <!-- Timebank logo -->
             
             <!-- Navbar items -->
             <nav class="mb-3">
                 <b-nav vertical>
-                <b-nav-item active @click="hide">Active</b-nav-item>
-                <b-nav-item href="#link-1" @click="hide">Link</b-nav-item>
-                <b-nav-item href="#link-2" @click="hide">Another Link</b-nav-item>
+                <b-nav-item href="/dashboard" @click="hide">Inicio</b-nav-item>
+                <b-nav-item href="/registered-users" @click="hide">Ver usuarios registrados</b-nav-item>
+                <b-nav-item href="/give-balance" @click="hide">Otorgar bonos de tiempo</b-nav-item>
                 </b-nav>
             </nav>
         </div>

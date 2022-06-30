@@ -1,6 +1,5 @@
 <template>
-  <div class="main">
-      <Topbar title="USUARIOS REGISTRADOS"/> 
+  <div class="main"> 
       <img src="../../assets/logo_banco.png" class="image-container">
       <div class="container text-left" style="width: 350px;">
           <div class="text-container mt-2 text-center">
@@ -11,7 +10,7 @@
         <form @submit.prevent="searchByName" class="row" style="width: -webkit-fill-available; justify-content: center;">
           <b-form-input class="search-bar" id="buscador" v-model="formData.name" placeholder="Nombre" />
           <b-form-input class="search-bar" id="buscador2" v-model="formData.surname" placeholder="Apellido" />
-          <div>
+          <div style="padding:0px;">
             <b-button type = "submit" class="search-button" variant="none">
                 <template>
                   Buscar <Icon icon="charm:search" style="width:22px; height:22px; margin-bottom:5px; color: white;"/>
@@ -23,22 +22,19 @@
     <div class="container" style="margin-top: 5px;">
       <b-card-group>
 
-        <b-card title="Nombre" body-class="card-names" title-class="webon">
+        <b-card title="Nombre" body-class="card-names">
           <b-card-text style="color: black;">
             <div v-for="(user,index) in users" :key="index">
-              <p style="margin-top: 16px; padding-top: 4px;">{{user.name}} {{user.surname}}</p>
+              <p style="margin-top: 16px; padding-top: 4px; font-size: 18px;">{{user.name}} {{user.surname}}</p>
             </div>
           </b-card-text>
         </b-card>
 
-        <b-card title="Bonos actuales" body-class="card-balance">
+        <b-card title="Tipo de usuario" body-class="card-type">
           <b-card-text style="color: black;">
             <div v-for="(user,index) in users" :key="index">
-              <div class="row" style="max-width: 180px; margin:auto;">
-                <b-input-group>
-                  <b-form-input id="balance" type = "number" v-model="newValue" :placeholder="''+user.balance"></b-form-input>
-                </b-input-group>
-              </div>
+              <p v-if="user.type_user=='Blue'" style="margin-top: 16px; padding-top: 4px; font-size: 18px;">Azul</p>
+              <p v-if="user.type_user=='Orange'" style="margin-top: 16px; padding-top: 4px; font-size: 18px;">Naranja</p>
             </div>
           </b-card-text>
         </b-card>
@@ -50,14 +46,9 @@
 </template>
 
 <script>
-import Topbar from '@/components/shared/Topbar.vue'
-
 import axios from 'axios'
 
 export default {
-    components: {
-            Topbar
-        },
   data() {
     return{
         formData:{
@@ -65,35 +56,29 @@ export default {
         surname: ''
         },
         users: [],
-        newValue: ''
     }
   },
   methods: {
     searchByName(){
+
+        const payload = {
+            name: this.formData.name,
+            surname: this.formData.surname
+        }
+
         axios 
-        .get( 'http://localhost:8080/api/users/getUser/' + this.formData.name + '/' +this.formData.surname )
+        .post( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/get-user-by-full-name' , payload )
           .then(( response ) => {
-            this.users = [];
-            const Comunity = response.data;
-            Comunity.forEach(element => {
-            if (element.type_user == "Orange"){
-              this.users.push(element)
-            }
-            });
+            this.users = response.data;
           })
         .catch(( error ) => console.log( error ))
     }
   },
   async mounted (){
     await axios
-      .get( 'http://localhost:8080/api/users/' )
+      .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/' )
       .then( response => {
-        const Comunity = response.data.usersComunidad;
-        Comunity.forEach(element => {
-          if (element.type_user == "Orange"){
-            this.users.push(element)
-          }
-        });
+        this.users = response.data.usersComunidad;
       })
       .catch(( e => console.log( e ) ))
   }
@@ -203,7 +188,7 @@ export default {
   height:50px;
 }
 .search-button{
-  width:50%;
+  width:70%;
   padding: 10px;
   margin: 10px 0px;
   background-color: #A70187;
@@ -217,7 +202,7 @@ export default {
   border-color: black;
   padding-bottom: 10px;
 }
-.card-balance{
+.card-type{
   padding: 0px;
   border-style: solid;
   border-left-width: 2px;
@@ -229,6 +214,17 @@ export default {
   color: white;
   border-bottom-style: solid;
   border-color: black;
+}
+.send-button{
+  background-color: #A70187!important;
+  margin: 0px;
+  margin-left: 20px; 
+  padding: 5px 10px;
+  border-radius: 10px!important;
+}
+.balance-form{
+  max-width: 65px;
+  border-radius: 4px!important;
 }
 
 </style>

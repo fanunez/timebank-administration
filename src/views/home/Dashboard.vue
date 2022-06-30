@@ -3,7 +3,7 @@
         <Topbar title="MENÚ ADMINISTRACIÓN"/> 
         <img src="../../assets/logo_banco.png" class="image-container">
         <!-- Users Record -->
-        <div class="container data-container text-left" style="width: 350px;">
+        <div class="container data-container text-left" onclick="location.href='/registered-users'" style="width: 350px; cursor:pointer;">
             <div class="text-container mt-2">
                 Usuarios registrados
             </div> 
@@ -13,7 +13,7 @@
         <div class="container mt-4" style="width: 350px;">
             <div class="row justify-content-between">
                 <!-- Actual services -->
-                <div class="data-container" style="height: 125px;">
+                <div class="data-container" onclick="location.href='/give-balance'" style="height: 125px; cursor:pointer;">
                     <ActualServices />
                 </div>
                 <!-- Actual balance -->

@@ -16,6 +16,7 @@
 <script>
 import { Bar } from 'vue-chartjs/legacy'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import axios from 'axios'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -60,22 +61,30 @@ export default {
             datasets: [
               {
                 label: ['Azules'],
-                data: [ 25 ],
+                data: [],
                 backgroundColor: ['#4040ff']
               },
               {
                 label: ['Naranjos'],
-                data: [ 8 ],
+                data: [],
                 backgroundColor: ['#ffa500']
               }
             ],
         },
         chartOptions: {
             responsive: true
-        }
+        },
     }
   },
-  async mounted () {
+  mounted () {
+    axios
+      .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/get/get-quantity' )
+      .then( response => {
+        this.chartData.datasets[0].data = [ response.data.BlueQuantity ]  
+        this.chartData.datasets[1].data = [ response.data.OrangeQuantity ]  
+      })
+      .catch(( e => console.log( e ) ))
+    
     this.loaded = false
 
     try {
@@ -85,6 +94,7 @@ export default {
     } catch ( error ) {
       console.error( error )
     }
+
   }
 }
 </script>
