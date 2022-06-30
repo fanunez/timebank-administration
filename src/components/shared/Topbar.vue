@@ -18,8 +18,9 @@
                aria-labelledby="sidebar-title"               
                backdrop
                shadow
-               style="margin:auto;"
-      >
+               no-header
+               style="position: absolute!important; top: 50%!important; left: 0!important;"
+    >
       <template #default="{ hide }">
         <div class="p-3">
             <h4 id="sidebar-no-header-title">ADMINISTRACIÓN BANCO DE TIEMPO</h4>
@@ -47,14 +48,26 @@
         }
     }
 </script>
-
+<style>
+.b-sidebar:not(.b-sidebar-right){
+    left: auto!important;
+    transition: 0.3s;    
+}
+.b-sidebar.slide{
+    width: 0px;
+}
+.b-sidebar:not(.b-sidebar-right).slide:not(.show){
+    transform: translateX(0%);
+}
+</style>
 <style scoped>
 .navbar-buttons{
     max-width: 425px;
     margin: 0 auto
 }
 .timebank-title{
-  font-weight: bold;
-  font-size: 24px;
+    font-weight: bold;
+    font-size: 24px;
 }
+
 </style>
