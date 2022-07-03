@@ -67,7 +67,7 @@ export default {
         }
 
         axios 
-        .post( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/get-user-by-full-name' , payload )
+        .post( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/get-user-by-full-name' , payload )
           .then(( response ) => {
             this.users = response.data;
           })
@@ -76,7 +76,7 @@ export default {
   },
   async mounted (){
     await axios
-      .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/' )
+      .get( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/' )
       .then( response => {
         this.users = response.data.usersComunidad;
       })

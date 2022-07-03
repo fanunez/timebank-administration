@@ -78,7 +78,7 @@ export default {
   },
   mounted () {
     axios
-      .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/get/get-quantity' )
+      .get( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/get/get-quantity' )
       .then( response => {
         this.chartData.datasets[0].data = [ response.data.BlueQuantity ]  
         this.chartData.datasets[1].data = [ response.data.OrangeQuantity ]  

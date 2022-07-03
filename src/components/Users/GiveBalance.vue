@@ -93,7 +93,7 @@ export default {
         }
 
         axios 
-        .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/get-user-by-full-name' , payload )
+        .get( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/get-user-by-full-name' , payload )
           .then(( response ) => {
             this.users = [];
             const Comunity = response.data;
@@ -112,7 +112,7 @@ export default {
       }
 
       await axios
-        .put( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/balance-asignator/'+ uid , payload )
+        .put( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/balance-asignator/'+ uid , payload )
         .then( response => {
           this.showModal()
         })
@@ -121,7 +121,7 @@ export default {
   },
   async mounted (){
     await axios
-      .get( process.env.VUE_APP_BACKEND_URL_SERVER + '/users/' )
+      .get( process.env.VUE_APP_BACKEND_URL_SERVER_BACKEND + '/users/' )
       .then( response => {
         const Comunity = response.data.usersComunidad;
         Comunity.forEach(element => {
