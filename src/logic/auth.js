@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const ENDPOINT_PATH_AUTH = process.env.VUE_APP_BACKEND_URL_LOCAL + '/auth/';
+const ENDPOINT_PATH_AUTH = process.env.VUE_APP_BACKEND_URL_SERVER + '/auth/';
 
 export default {
   setUserLogged(userLogged) {
